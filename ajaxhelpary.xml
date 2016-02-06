@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="plugin" group="ajax" method="upgrade">
   <name>Ajax - HelpAry</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <creationDate>2016-02-06</creationDate>
   <author>Gruz</author>
   <authorEmail>arygroup@gmail.com</authorEmail>

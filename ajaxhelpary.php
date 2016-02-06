@@ -23,8 +23,11 @@ class plgAjaxAjaxhelpary extends JPlugin
 
 		$limitplugins = $this->params->get('limitplugins',1);
 		if ($limitplugins) {
-			$list_templates = $this->params->get('list_templates',"{\"scope\":[\"admin\",\"both\"],\"plg_type\":[\"system\",\"content\"],\"plg_name\":[\"menuary\",\"notifyarticlesubmit\"],\"function\":[\"_ajaxRun\",\"_ajaxRun\"]}");
-			$list_templates = json_decode($list_templates);
+			$params = $this->params->get('list_templates');
+			$list_templates = json_decode($params);
+			if (!empty($params) && $list_templates === NULL) { // The default joomla installation procedure doesn't store defaut params into the DB in the correct way
+				$list_templates = json_decode("{\"scope\":[\"admin\",\"both\"],\"plg_type\":[\"system\",\"content\"],\"plg_name\":[\"menuary\",\"notifyarticlesubmit\"],\"function\":[\"_ajaxRun\",\"_ajaxRun\"]}");
+			}
 
 			$isOk = false;
 			if (!empty($list_templates) && !empty($list_templates->plg_type)) {
@@ -42,7 +45,7 @@ class plgAjaxAjaxhelpary extends JPlugin
 				}
 			}
 			if (!$isOk) {
-				return JError::raiseWarning(403,JText::_('JERROR_ALERTNOAUTHOR'));
+				return JError::raiseWarning(403,JText::_('JERROR_ALERTNOAUTHOR'). '##error##');
 			}
 		}
 
