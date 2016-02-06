@@ -26,7 +26,8 @@ class plgAjaxAjaxhelpary extends JPlugin
 			$params = $this->params->get('list_templates');
 			$list_templates = json_decode($params);
 			if (!empty($params) && $list_templates === NULL) { // The default joomla installation procedure doesn't store defaut params into the DB in the correct way
-				$list_templates = json_decode("{\"scope\":[\"admin\",\"both\"],\"plg_type\":[\"system\",\"content\"],\"plg_name\":[\"menuary\",\"notifyarticlesubmit\"],\"function\":[\"_ajaxRun\",\"_ajaxRun\"]}");
+				$params = str_replace("'",'"',$params);
+				$list_templates = json_decode($params);
 			}
 
 			$isOk = false;
