@@ -20,6 +20,7 @@ class plgAjaxAjaxhelpary extends JPlugin
 		$plg_name = $jinput->get('plg_name',null);
 		$function = $jinput->get('function',null);
 		$uniq = $jinput->get('uniq',null);
+		$serialize = $jinput->get('serialize',null);
 
 		$limitplugins = $this->params->get('limitplugins',1);
 		if ($limitplugins) {
@@ -54,7 +55,7 @@ class plgAjaxAjaxhelpary extends JPlugin
 
 		JPluginHelper::importPlugin( $plg_type, $plg_name);
 		$dispatcher = JEventDispatcher::getInstance();
-		$results = $dispatcher->trigger( $function, array($uniq) );
+		$results = $dispatcher->trigger( $function, array($uniq,$serialize) );
 
 		if (!empty($results)) {
 			return $results[0];
