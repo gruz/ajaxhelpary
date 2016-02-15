@@ -5,6 +5,14 @@ class plgAjaxAjaxhelpary extends JPlugin
 {
 
 	function onAjaxAjaxHelpAry() {
+		$jinput = JFactory::getApplication()->input;
+		$scope = $jinput->get('scope',null);
+		$serialize = $jinput->get('serialize',null);
+		if ($scope == 'this') {
+			$this->getFEURl ($serialize);
+			return;
+		}
+
 		JSession::checkToken( 'get' ) or die( 'Invalid Token' );
 
 
@@ -14,13 +22,11 @@ class plgAjaxAjaxhelpary extends JPlugin
 		} else { $scope = 'site'; }
 
 
-		$jinput = JFactory::getApplication()->input;
 
 		$plg_type = $jinput->get('plg_type',null);
 		$plg_name = $jinput->get('plg_name',null);
 		$function = $jinput->get('function',null);
 		$uniq = $jinput->get('uniq',null);
-		$serialize = $jinput->get('serialize',null);
 
 		$limitplugins = $this->params->get('limitplugins',1);
 		if ($limitplugins) {
@@ -60,5 +66,12 @@ class plgAjaxAjaxhelpary extends JPlugin
 		if (!empty($results)) {
 			return $results[0];
 		}
+	}
+	function getFEURl ($serialize) {
+		$url = unserialize(base64_decode($serialize));
+		echo JRoute::_($url);
+		//~ $router1 = JRouter::getInstance('site');
+		//~ dump ($router1,'$router1');
+		//~ $url = $router1->build('index.php?option=com_k2&view=item&id=1&Itemid=510')->toString();
 	}
 }
