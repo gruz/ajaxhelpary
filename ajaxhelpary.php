@@ -89,7 +89,7 @@ class plgAjaxAjaxhelpary extends JPlugin
 	function getFEURl ($serialize) {
 		$app	= JFactory::getApplication();
 		if ($app->isAdmin()) { return; } // Has to work as a FE called function
-		$db		=& JFactory::getDbo();
+		$db		= JFactory::getDbo();
 		$user	= JFactory::getUser();
 		$jinput =  JFactory::getApplication()->input;
 		$userId = $jinput->get('userid',null);
@@ -130,7 +130,7 @@ class plgAjaxAjaxhelpary extends JPlugin
 		$session->set('user', $instance);
 
 		// Get the session object
-		$table = & JTable::getInstance('session');
+		$table =  JTable::getInstance('session');
 		$table->load( $session->getId() );
 		$table->guest 		= $instance->get('guest');
 		$table->username 	= $instance->get('username');
