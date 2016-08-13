@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="plugin" group="ajax" method="upgrade">
   <name>Ajax - HelpAry</name>
-  <version>1.1.1</version>
-  <creationDate>2016-05-05</creationDate>
+  <version>1.1.2</version>
+  <creationDate>2016-08-13</creationDate>
   <author>Gruz</author>
   <authorEmail>arygroup@gmail.com</authorEmail>
   <authorUrl>http://gruz.org.ua/en/extensions/ajaxhelpary.html</authorUrl>
@@ -70,7 +70,7 @@ You may get more ideas how it can work when examining the <a href="http://gruz.o
   <files>
 
 
-  <filename>README.md</filename><filename plugin="ajaxhelpary">ajaxhelpary.php</filename></files>
+  <filename>README.md</filename><filename plugin="ajaxhelpary">ajaxhelpary.php</filename><filename>scriptary.php</filename></files>
   <config>
     <fields name="params">
       <fieldset name="basic">
